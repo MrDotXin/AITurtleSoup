@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mrdotxin.aiturtlesoup.mapper.ChatRoomMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mrdotxin.aiturtlesoup.model.entity.ChatRoom">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="avatar" property="avatar" />
+        <result column="status" property="status" />
+        <result column="sessionId" property="sessionId" />
+        <result column="maxPlayers" property="maxPlayers" />
+        <result column="currentPlayers" property="currentPlayers" />
+        <result column="createTime" property="createTime" />
+        <result column="updateTime" property="updateTime" />
+        <result column="isDeleted" property="isDeleted" />
+        <result column="anchorId" property="anchorId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, name, avatar, status, c, maxPlayers, currentPlayers, createTime, updateTime, isDeleted, anchorId
+    </sql>
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mrdotxin.aiturtlesoup.mapper.RoomPlayerMapper">
+    <resultMap id="BaseResultMap" type="com.mrdotxin.aiturtlesoup.model.entity.RoomPlayer">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="roomId" column="roomId" jdbcType="BIGINT"/>
+        <result property="playerId" column="playerId" jdbcType="BIGINT"/>
+        <result property="joinTime" column="joinedTime" jdbcType="TIMESTAMP"/>
+        <result property="isSpectator" column="isSpectator" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,roomId,playerId,joinedTime,isSpectator
+    </sql>
+</mapper>

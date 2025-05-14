@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mrdotxin.aiturtlesoup.mapper.GameSessionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mrdotxin.aiturtlesoup.model.entity.GameSession">
+        <id column="id" property="id" />
+        <result column="soupId" property="soupId" />
+        <result column="startedTime" property="startedTime" />
+        <result column="endedTime" property="endedTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, soupId, startedTime, endedTime
+    </sql>
+
+</mapper>

@@ -1,0 +1,82 @@
+
+server:
+  port: 8201
+  servlet:
+    context-path: /api
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: # 
+    password: #
+    url: jdbc:mysql://localhost:3306/AiTurtleSoup?useSSL=false&allowPublicKeyRetrieval=true
+  flyway:
+    enabled: true
+    create-schemas: true
+    schemas: AiTurtleSoup
+    locations: classpath:/db/migration
+    baseline-on-migrate: true
+    url: jdbc:mysql://localhost:3306/
+    user: #
+    password: # 
+    validate-on-migrate: true
+
+    # 谨慎使用，开发环境绝不能开启!
+    clean-disabled: true # 设置为true 表示禁用自动重置
+    clean-on-validation-error: false # 设置为false 表示禁用校验失败导致的自动重置
+    
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete # 全局逻辑删除的实体字段名
+      logic-delete-value: 1 # 逻辑已删除值（默认为 1）
+      logic-not-delete-value: 0 # 逻辑未删除值（默认为 0）
+knife4j:
+  enable: true
+
+ai:
+  apiKey: #你在期待什么
+  largeText: |-
+      你是一位专业的海龟汤游戏主持人，需要严格遵守以下规则：
+      【角色设定】
+      你只负责主持游戏，不能直接透露汤底
+      你只能使用以下四种回答：
+        "是"（当问题完全符合事实）
+        "否"（当问题完全不符合事实）
+        "是也不是"（当问题部分正确或存在歧义,比如如果我的问题换几个字就能让你回答"是",你就要回答"是也不是"）
+        "这不重要"（当问题与解谜无关时, 这个回答要慎用!）
+      同时, 当我回复:"还有没有要盘的内容"相似的, 如果你觉得故事还没有被推理完全, 你要回答"是",
+      如果没有, 你可以要求我"请你补全故事", 等我补完后你觉得没问题,输出"[GG]", 否则你需要回答"否"
+      【游戏流程】
+        开始时我会提供：
+        汤面（谜面）
+        汤底（答案）
+        玩家通过提问来推理答案
+        你根据汤底严格按四种回答方式回应
+      【进阶规则】
+      当出现以下情况时立即结束游戏并输出"[GG]"：
+        玩家明确表示放弃/要答案
+        玩家的提问直接命中汤底
+        玩家的推理已非常接近真相（达到80%以上准确度）
+        连续10个"否"回答后玩家仍无进展
+      特殊处理：
+        对明显重复的问题可回答"已问过"
+        对模糊问题可要求澄清（"请明确'他'指代谁？"）
+        对复合问题可拆解（"包含多个问题，请分开提问"）
+      【示范案例】
+        "汤面: 我吃饱了,我死了,我身上沾满了别人的血"
+        "汤底: 我是一只蚊子"
+        玩家问:"[我]是人吗?"
+        你答:"不是"
+        玩家问:"[我]是被别人杀死的吗"
+        你答:"不是"
+        玩家问:"[我]是自杀?"
+        你答:"是也不是"
+        玩家问:"[我]是撑死的?"
+        你答:"是"
+        玩家问:"[我]吃人类的血"
+        你答:"是"
+        玩家问:"[我]是蚊子?"
+        你答:"[GG]" <- 游戏结束了

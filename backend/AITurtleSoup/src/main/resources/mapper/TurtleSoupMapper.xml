@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mrdotxin.aiturtlesoup.mapper.TurtleSoupMapper">
+    <resultMap id="BaseResultMap" type="com.mrdotxin.aiturtlesoup.model.entity.TurtleSoup">
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="riddle" column="riddle" jdbcType="VARCHAR"/>
+        <result property="solution" column="solution" jdbcType="VARCHAR"/>
+        <result property="difficulty" column="difficulty" jdbcType="TINYINT"/>
+        <result property="category" column="category" jdbcType="VARCHAR"/>
+        <result property="createdTime" column="createdTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,riddle,solution,difficulty,category,createdTime
+    </sql>
+</mapper>
